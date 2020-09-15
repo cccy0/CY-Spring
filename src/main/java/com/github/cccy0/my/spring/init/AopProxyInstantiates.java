@@ -11,6 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
+ * 把所有的Bean都进行代理
  * @author Zhai
  * 2020/9/9 16:27
  */
