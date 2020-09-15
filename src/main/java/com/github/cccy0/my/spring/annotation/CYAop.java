@@ -26,7 +26,7 @@ public @interface CYAop {
      */
     String AROUND = "around";
 
-    String aopBeanName() default "";
+    String aopBeanName();
 
-    String aopType() default "";
+    String aopType() default AROUND;
 }

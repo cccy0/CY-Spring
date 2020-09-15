@@ -8,13 +8,12 @@ import com.github.cccy0.my.spring.aop.Aop;
  * 2020/9/9 11:58
  */
 @CYAopBean
-public class AopTest implements Aop<String> {
+public class AopTest implements Aop {
     public void before() {
         System.out.println("--- aop before ---");
     }
 
-    public String after(String object) {
+    public void after(Object object) {
         System.out.println("--- aop after ---");
-        return object + "--- aop after";
     }
 }

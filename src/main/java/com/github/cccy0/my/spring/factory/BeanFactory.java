@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 public class BeanFactory {
-    private List<BeanInfo> beans = new ArrayList<>();
+    private final List<BeanInfo> beans = new ArrayList<>();
 
     private BeanFactory() {
     }

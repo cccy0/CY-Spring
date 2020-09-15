@@ -5,8 +5,11 @@ package com.github.cccy0.my.spring.aop;
  * 2020/9/9 11:56
  */
 
-public interface Aop<T> {
+public interface Aop {
     void before();
 
-    T after(T object);
+    /**
+     * @param object 方法执行的返回值
+     */
+    void after(Object object);
 }

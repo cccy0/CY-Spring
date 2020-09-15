@@ -7,21 +7,21 @@ import com.github.cccy0.my.spring.annotation.CYService;
  * @author Zhai
  * 2020/9/9 14:17
  */
-@CYService
+@CYService("testService")
 public class TestService {
 
-    @CYAop(aopBeanName = "aopTest", aopType = CYAop.AROUND)
+    @CYAop(aopBeanName = "aopTest")
     public String getPeople(String name) {
         if (name == null || "".equals(name)) {
-            return "No Name:age-?,sex-?";
+            return "No Name:age-?";
         }
         switch (name) {
             case "张三":
-                return "Hello " + name + "!(age-23,sex-mail)";
+                return "Hello " + name + "!(age-23)";
             case "李四":
-                return "Hello " + name + "!(age-24,sex-femail)";
+                return "Hello " + name + "!(age-24)";
             case "王五":
-                return "Hello " + name + "!(age-27,sex-femail)";
+                return "Hello " + name + "!(age-27)";
             default:
                 return "Who are you?";
         }
