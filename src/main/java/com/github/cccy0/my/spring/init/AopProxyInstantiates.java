@@ -48,6 +48,7 @@ public class AopProxyInstantiates {
         String aopType = aop.aopType();
         // 获取Bean
         BeanInfo beanInfo = BeanFactory.getInstance().gainBean(aopBeanName);
+        // 不能对Aop bean 进行代理 所以这里直接获取原生Bean
         final Aop aopBean = (Aop) beanInfo.getBean();
         // 生成代理对象
         Object proxy = new SonProxy(obj) {

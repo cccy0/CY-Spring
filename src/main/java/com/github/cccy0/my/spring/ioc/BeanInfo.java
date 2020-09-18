@@ -42,6 +42,15 @@ public class BeanInfo {
         return aop == null ? bean : aop;
     }
 
+    public MethodInfo gainMethod(String methodName) {
+        for (MethodInfo methodInfo : methods) {
+            if (methodInfo.getMethodName().equals(methodName)) {
+                return methodInfo;
+            }
+        }
+        return null;
+    }
+
     public BeanInfo gainBeanInfo(String target){
         if (name != null && name.equals(target)) return this;
         if (className != null && className.equals(target)) return this;

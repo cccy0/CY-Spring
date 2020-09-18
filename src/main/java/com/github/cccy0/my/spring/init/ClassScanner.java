@@ -1,6 +1,7 @@
 package com.github.cccy0.my.spring.init;
 
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,11 @@ public class ClassScanner {
 
     public static void doScan() {
         try {
-            File file = new File(ClassScanner.class.getResource("../").toURI());
+            URL url = Thread.currentThread().getContextClassLoader().getResource("/");
+            if (url == null) {
+                throw new Exception("classpath error !");
+            }
+            File file = new File(url.toURI());
             doScan(file);
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,7 +1,9 @@
 package com.github.cccy0.my.spring.example.service;
 
 import com.github.cccy0.my.spring.annotation.CYAop;
+import com.github.cccy0.my.spring.annotation.CYAutowired;
 import com.github.cccy0.my.spring.annotation.CYService;
+import com.github.cccy0.my.spring.example.dao.TestDao;
 
 /**
  * @author Zhai
@@ -9,6 +11,8 @@ import com.github.cccy0.my.spring.annotation.CYService;
  */
 @CYService
 public class TestService {
+    @CYAutowired
+    private TestDao testDao;
 
     @CYAop(aopBeanName = "aopTest")
     public String getPeople(String name) {
@@ -23,7 +27,7 @@ public class TestService {
             case "王五":
                 return "Hello " + name + "!(age-27)";
             default:
-                return "Who are you?";
+                return testDao.getData();
         }
     }
 }
