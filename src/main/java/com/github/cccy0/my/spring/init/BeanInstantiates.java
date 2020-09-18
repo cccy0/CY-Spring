@@ -33,6 +33,7 @@ public class BeanInstantiates {
                String beanName = controller.value();
                if ("".equals(beanName)) {
                    beanName = clazz.getSimpleName();
+                   beanName = beanName.substring(0, 1).toLowerCase() + beanName.substring(1);
                }
                addBeanProperties(bi, beanName, clazz.getName(), BeanInfo.CONTROLLER);
            } else if (clazz.isAnnotationPresent(CYService.class)) {
@@ -41,16 +42,18 @@ public class BeanInstantiates {
                 String beanName = service.value();
                 if ("".equals(beanName)) {
                     beanName = clazz.getSimpleName();
+                    beanName = beanName.substring(0, 1).toLowerCase() + beanName.substring(1);
                 }
-                addBeanProperties(bi, beanName, clazz.getName(), BeanInfo.CONTROLLER);
+                addBeanProperties(bi, beanName, clazz.getName(), BeanInfo.SERVICE);
             } else if (clazz.isAnnotationPresent(CYAopBean.class)) {
                flag = true;
                CYAopBean aopBean = clazz.getAnnotation(CYAopBean.class);
                String beanName = aopBean.value();
                if ("".equals(beanName)) {
                    beanName = clazz.getSimpleName();
+                   beanName = beanName.substring(0, 1).toLowerCase() + beanName.substring(1);
                }
-               addBeanProperties(bi, beanName, clazz.getName(), BeanInfo.CONTROLLER);
+               addBeanProperties(bi, beanName, clazz.getName(), BeanInfo.AOP);
            }
            if (!flag) {
                continue;

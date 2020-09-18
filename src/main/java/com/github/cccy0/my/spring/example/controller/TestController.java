@@ -8,7 +8,7 @@ import com.github.cccy0.my.spring.example.service.TestService;
 /**
  *
  **/
-@CYController("testController")
+@CYController
 @CYRequestMapping("/test")
 public class TestController {
 

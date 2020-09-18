@@ -7,7 +7,7 @@ import com.github.cccy0.my.spring.annotation.CYService;
  * @author Zhai
  * 2020/9/9 14:17
  */
-@CYService("testService")
+@CYService
 public class TestService {
 
     @CYAop(aopBeanName = "aopTest")
