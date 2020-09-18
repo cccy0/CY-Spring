@@ -1,9 +1,11 @@
 package com.github.cccy0.my.spring.web;
 
 import com.github.cccy0.my.spring.factory.BeanFactory;
+import com.github.cccy0.my.spring.factory.URLFactory;
 import com.github.cccy0.my.spring.init.AopProxyInstantiates;
 import com.github.cccy0.my.spring.init.BeanInstantiates;
 import com.github.cccy0.my.spring.init.ClassScanner;
+import com.github.cccy0.my.spring.init.UrlMethodMapper;
 import com.github.cccy0.my.spring.ioc.BeanInfo;
 
 import javax.servlet.http.HttpServlet;
@@ -23,8 +25,9 @@ public class DispatcherServlet /*extends HttpServlet**/ {
         // 为所有的Bean添加Aop代理对象
         AopProxyInstantiates.init();
 
-        List<BeanInfo> beanInfos = BeanFactory.getInstance().gainAops();
-        List<BeanInfo> beanInfos1 = BeanFactory.getInstance().gainControllers();
-        List<BeanInfo> beanInfos2 = BeanFactory.getInstance().gainServices();
+        UrlMethodMapper.init();
+
+        URLFactory instance = URLFactory.getInstance();
+        System.out.println("");
     }
 }
