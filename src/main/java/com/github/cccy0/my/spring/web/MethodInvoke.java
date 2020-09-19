@@ -19,7 +19,8 @@ import java.util.List;
 
 public class MethodInvoke {
     public static String invoke(HttpServletRequest req, HttpServletResponse res) {
-        try (PrintWriter writer = res.getWriter()) {
+        PrintWriter writer = null;
+        try {
             // 获取uri
             String uri = req.getRequestURI();
             if (uri.lastIndexOf("?") != -1) {
@@ -30,6 +31,7 @@ public class MethodInvoke {
             if (urlMethodRelate == null) {
                 return "404";
             }
+            writer = res.getWriter();
             // 获取bean
             BeanInfo bi = BeanFactory.getInstance().gainBean(urlMethodRelate.getClassName());
             Object bean = bi.gainInvokeObj();
@@ -48,10 +50,15 @@ public class MethodInvoke {
             Object result = method.invoke(bean, params.toArray());
             if (result != null) {
                 writer.write(result.toString());
+                writer.flush();
             }
             return "200";
         } catch (Exception e) {
             return "500";
+        } finally {
+            if (writer != null) {
+                writer.close();
+            }
         }
     }
 }

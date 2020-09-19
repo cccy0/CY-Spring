@@ -22,17 +22,25 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try (PrintWriter writer = resp.getWriter()) {
-            req.setCharacterEncoding("utf-8");
-            resp.setCharacterEncoding("utf-8");
-            resp.setContentType("text/html;charset=utf-8");
+        req.setCharacterEncoding("utf-8");
+        // 一定要先设置编码再获取writer, 因为writer要指定编码
+        resp.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html;charset=utf-8");
+        PrintWriter writer = null;
+        try {
             String httpCode = MethodInvoke.invoke(req, resp);
             if ("404".equals(httpCode)) {
-                writer.write("404");
                 resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                writer = resp.getWriter();
+                writer.write("{\"code\": 404}");
+                writer.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (writer != null) {
+                writer.close();
+            }
         }
     }
 
