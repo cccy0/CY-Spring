@@ -7,8 +7,8 @@ import com.github.cccy0.my.spring.annotation.CYResource;
 import com.github.cccy0.my.spring.example.service.TestService;
 
 /**
- *
- **/
+ * @author Zhai
+ */
 @CYController
 @CYRequestMapping("/test")
 public class TestController {
@@ -16,7 +16,7 @@ public class TestController {
     @CYAutowired
     private TestService testService;
 
-    @CYRequestMapping("/people")
+    @CYRequestMapping(value = "/people", method = CYRequestMapping.METHOD_GET)
     public String helloWorld(String name, String remark) {
         System.out.println(name);
         System.out.println(remark);
