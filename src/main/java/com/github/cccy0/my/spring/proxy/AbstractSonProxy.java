@@ -8,10 +8,10 @@ import net.sf.cglib.proxy.MethodInterceptor;
  * 2020/9/9 16:10
  */
 
-public abstract class SonProxy implements MethodInterceptor {
+public abstract class AbstractSonProxy implements MethodInterceptor {
     protected Object obj;
 
-    public SonProxy(Object obj) {
+    public AbstractSonProxy(Object obj) {
         this.obj = obj;
     }
 

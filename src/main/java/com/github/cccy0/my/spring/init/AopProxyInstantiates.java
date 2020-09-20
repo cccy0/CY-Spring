@@ -4,7 +4,7 @@ import com.github.cccy0.my.spring.annotation.CYAop;
 import com.github.cccy0.my.spring.aop.Aop;
 import com.github.cccy0.my.spring.factory.BeanFactory;
 import com.github.cccy0.my.spring.ioc.BeanInfo;
-import com.github.cccy0.my.spring.proxy.SonProxy;
+import com.github.cccy0.my.spring.proxy.AbstractSonProxy;
 import net.sf.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.InvocationTargetException;
@@ -51,7 +51,7 @@ public class AopProxyInstantiates {
         // 不能对Aop bean 进行代理 所以这里直接获取原生Bean
         final Aop aopBean = (Aop) beanInfo.getBean();
         // 生成代理对象
-        Object proxy = new SonProxy(obj) {
+        Object proxy = new AbstractSonProxy(obj) {
 
             /**
              * @return Object 代理之后的方法返回值
