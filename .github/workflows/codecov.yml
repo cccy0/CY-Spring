@@ -23,5 +23,5 @@ jobs:
         run: mvn -B test --file pom.xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
-        with:
+        #with:
           #file: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
