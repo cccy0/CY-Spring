@@ -38,7 +38,7 @@ public class ClassScanner {
             } else {
                 // 将路径中的\转换为.
                 // pathExample:  D:\acy\project\personal\my-spring\target\classes\com\github\cccy0\my\spring
-                String path = f.getPath().replace("\\", ".");
+                String path = f.getPath().replace("\\", ".").replace("/", ".");
                 if (!path.endsWith(".class")) {
                     continue;
                 }
