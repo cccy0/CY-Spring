@@ -1,8 +1,10 @@
 package com.github.cccy0.my.spring.init;
 
 import java.io.File;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,7 +22,15 @@ public class ClassScanner {
             if (url == null) {
                 throw new Exception("classpath error !");
             }
-            File file = new File(url.toURI());
+            System.out.println("current base path: " + url.toString());
+            // todo: 这边包扫描的实现思路错误了, 等有空再改
+            String[] urlStrings = url.toString().split("/");
+            StringBuilder urlString = new StringBuilder();
+            for (int i = 0; i < urlStrings.length - 1; i++) {
+                urlString.append(urlStrings[i]).append("/");
+            }
+            System.out.println(urlString);
+            File file = new File(new URI(urlString.toString()));
             doScan(file);
         } catch (Exception e) {
             e.printStackTrace();

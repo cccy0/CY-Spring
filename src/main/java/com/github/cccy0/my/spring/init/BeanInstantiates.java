@@ -71,6 +71,10 @@ public class BeanInstantiates {
                 // 存储方法信息
                 List<MethodInfo> methodInfos = new ArrayList<>(methods.length);
                 for (Method m : methods) {
+                    // 去除静态方法 (todo: 这边实现思路也不太对, 以后再研究)
+                    if (Modifier.isStatic(m.getModifiers())) {
+                        continue;
+                    }
                     MethodInfo mi = new MethodInfo();
                     // 方法名
                     mi.setMethodName(m.getName());
