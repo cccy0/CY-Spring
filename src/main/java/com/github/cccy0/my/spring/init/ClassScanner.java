@@ -16,7 +16,7 @@ public class ClassScanner {
 
     public static void doScan() {
         try {
-            URL url = Thread.currentThread().getContextClassLoader().getResource("/");
+            URL url = Thread.currentThread().getContextClassLoader().getResource("");
             if (url == null) {
                 throw new Exception("classpath error !");
             }

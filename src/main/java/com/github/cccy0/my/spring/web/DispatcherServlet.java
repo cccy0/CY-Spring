@@ -57,5 +57,6 @@ public class DispatcherServlet extends HttpServlet {
         UrlMethodMapper.init();
         // 属性注入
         ParamWired.init();
+        System.out.println("bean init success");
     }
 }

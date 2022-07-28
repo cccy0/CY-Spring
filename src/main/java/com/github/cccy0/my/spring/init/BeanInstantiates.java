@@ -110,7 +110,7 @@ public class BeanInstantiates {
             List<String> paramNames = new ArrayList<>();
             ClassPool pool = ClassPool.getDefault();
             // 手动将类路径加入pool
-            URL resource = Thread.currentThread().getContextClassLoader().getResource("/");
+            URL resource = Thread.currentThread().getContextClassLoader().getResource("");
             if (resource == null) {
                 throw new Exception("path error !");
             }
